@@ -9,3 +9,19 @@
 - Координаты;
 
 Bonus: Оформить Dockerfile.
+
+Прежде чем запускать:
+- установить postgresql
+- установить PostGis. [Django Docs](https://docs.djangoproject.com/en/2.1/ref/contrib/gis/install/postgis/)
+- загрузить файлы .mmdb из [базы MaxMind](https://dev.maxmind.com/geoip/geoip2/geolite2/) в папку `geoip`
+
+Сделано:
+- Модели
+- фильтр по расстоянию в апи
+- .env
+- подготовлен auth
+
+Не сделано:
+- Dockerfile
+- фронт для регистрации пользователей
+- тесты
