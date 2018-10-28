@@ -1,5 +1,7 @@
+from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geoip2 import GeoIP2
-from django.contrib.gis.measure import D
+from tastypie.authentication import ApiKeyAuthentication
+from tastypie.authorization import DjangoAuthorization
 from tastypie.contrib.gis.resources import ModelResource
 from tastypie import fields
 
@@ -14,6 +16,8 @@ class PlaceResource(ModelResource):
             'distance': ('lte', 'lt')
         }
         queryset = Place.objects.all()
+        authentication = ApiKeyAuthentication()
+        authorization = DjangoAuthorization()
 
     distance = fields.FloatField()
 
@@ -25,4 +29,4 @@ class PlaceResource(ModelResource):
             # let's show them our favorite tacos
             point = geo_ip2.geos('1.1.1.1')
 
-        return super().get_object_list(request).annotate(distance=D('location', point).m)
+        return super().get_object_list(request).annotate(distance=Distance('location', point))
