@@ -25,7 +25,7 @@ SECRET_KEY = '4&#s^x#34l68_n@3_v^=ecwm+q7(v#z5&pfxbb$s3x50$@xtyq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['84c94c49.ngrok.io', ]
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'geoservice'
+    'geoservice',
+    'tastypie'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+GEOIP_PATH = os.path.join('geoip')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
